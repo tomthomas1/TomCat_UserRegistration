@@ -12,7 +12,7 @@
 </head>
 <body>
 <div>
-    <h3> Hi <%=request.getAttribute("user")%>, You have successfully logged in! <h3>
+    <h3> Hi <%=request.getAttribute("user")%>, You have successfully logged in! </h3>
         <a href = "login.html">Login Page</a>
 </div>
 </body>

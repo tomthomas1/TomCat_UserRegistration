@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet(
         description = "Login Servlet Testing",
@@ -30,8 +32,17 @@ public class LoginServlet extends HttpServlet {
         String user = getServletConfig().getInitParameter("user");
         String password = getServletConfig().getInitParameter("password");
 
+        Pattern pattern = Pattern.compile("^([A-Z][a-zA-Z]{2,}[ ]?)+$");
+        Matcher matcher = pattern.matcher(userInput);
+        if(!matcher.matches()) {
+            PrintWriter out = response.getWriter();
+            out.println("<font color = red> Incorrect UserId. Please try again!!<font>");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
+            rd.include(request, response);
+            return;
+        }
+
         if (user.equals(userInput) && password.equals(pwdInput)) {
-            System.out.println(" Correct user");
             request.setAttribute("user", user);
             request.getRequestDispatcher("/LoginSuccess.jsp").forward(request, response);
         }

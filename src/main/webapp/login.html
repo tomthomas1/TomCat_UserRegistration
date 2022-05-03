@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
+    <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-<form action="LoginServlet" method="post">
-    <div>
-        Username: <input type="text" name="user">
+<div class="form-content">
+<form class = "form" action="LoginServlet" method="post">
+    <div class="form-head">Login Page</div>
+    <div class="row-content">
+        <label class="label text">Username</label>
+        <input type="text" name="user" class="input" placeholder="Your Name ...">
     </div>
-    <div>
-        Password: <input type="password" name="pwd">
+
+    <div class="row-content">
+        <label class="label text">Password</label>
+        <input type="password" name="pwd" class="input" placeholder="Your Password ...">
     </div>
-    <div>
-        <input type="submit" value="LOGIN">
+
+    <div class="submit">
+        <button type="submit" class="button submitButton" >Submit</button>
     </div>
 </form>
+</div>
 </body>
 </html>
